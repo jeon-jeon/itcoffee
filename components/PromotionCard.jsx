@@ -1,11 +1,13 @@
-const MenuCard = (props) => {
+const PromotionCard = (props) => {
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
+        width: "250px",
+        borderRadius: "20px",
         alignItems: "center",
-        justifyItems: "center",
+        justifyContent: "center",
         gap: "5px",
       }}
     >
@@ -13,14 +15,16 @@ const MenuCard = (props) => {
         style={{
           width: "100%",
           objectFit: "cover",
-          border: "1px solid #eeeeee",
+          borderRadius: "10px",
         }}
         src={props.imgSrc}
         alt=""
       />
-      <span style={{ fontSize: "16px", fontWeight: 600 }}>{props.title}</span>
+
+      <p style={{ color: "#7fb1ee" }}>{props.period}</p>
+      <p>{props.content}</p>
     </div>
   );
 };
 
-export default MenuCard;
+export default PromotionCard;

@@ -19,7 +19,9 @@ const Header = () => {
           alignItems: "center",
         }}
       >
-        <span style={{ fontSize: "24px", fontWeight: 600 }}>ITCOFFEE</span>
+        <Link href={"/"}>
+          <span style={{ fontSize: "24px", fontWeight: 600 }}>ITCOFFEE</span>
+        </Link>
         <ul
           style={{
             display: "flex",
@@ -28,20 +30,23 @@ const Header = () => {
             gap: "50px",
           }}
         >
-          <Link href="/brand">
+          <Link href={"/brand"}>
             <li>BRAND</li>
           </Link>
-          <Link href="/franchise">
+          <Link href={"/franchise"}>
             <li>FRANCHISE</li>
           </Link>
-          <Link href="/menu">
+          <Link href={"/menu"}>
             <li>MENU</li>
           </Link>
-          <Link href="/store">
+          <Link href={"/store"}>
             <li>STORE</li>
           </Link>
-          <Link href="/news">
+          <Link href={"/news"}>
             <li>NEWS</li>
+          </Link>
+          <Link href={"/goods"}>
+            <li>GOODS</li>
           </Link>
         </ul>
       </nav>

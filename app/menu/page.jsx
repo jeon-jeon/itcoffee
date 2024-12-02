@@ -1,5 +1,6 @@
 import Menu from "@/components/Menu";
 import MenuCard from "@/components/MenuCard";
+import Link from "next/link";
 
 const Page = async () => {
   const data = await fetch("https://api.sampleapis.com/coffee/hot").then(
@@ -25,7 +26,9 @@ const Page = async () => {
         }}
       >
         {data.map((v, i) => (
-          <MenuCard key={i} imgSrc={v.image} title={v.title} />
+          <Link href={`/menu/${i}`}>
+            <MenuCard key={i} imgSrc={v.image} title={v.title} />
+          </Link>
         ))}
       </div>
     </section>
