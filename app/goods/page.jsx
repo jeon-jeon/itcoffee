@@ -1,36 +1,35 @@
-import MenuCard from "@/components/MenuCard";
+import GoodsCard from "@/components/GoodsCard";
 import Link from "next/link";
 
-const Page = () => {
+const Page = async () => {
+  const data = await fetch("https://dummyjson.com/products")
+    .then((res) => res.json())
+    .then((v) => v.products);
+
   return (
-    <div
+    <section
       style={{
         display: "flex",
-        width: "100vw",
-        maxHeight: "1040px",
+        width: "100%",
+        maxWidth: "1040px",
         margin: "0 auto",
-        gap: "10px",
+        padding: "50px 0px",
       }}
     >
-      <Link href={"/goods/1"}>
-        <MenuCard
-          imgSrc="https://image.istarbucks.co.kr/upload/store/skuimg/2024/11/[9300000005590]_20241108105130637.jpg"
-          title="머그"
-        />
-      </Link>
-      <Link href={"/goods/2"}>
-        <MenuCard
-          imgSrc="https://image.istarbucks.co.kr/upload/store/skuimg/2024/10/[9300000005338]_20241023104220869.jpg"
-          title="텀블러"
-        />
-      </Link>
-      <Link href={"/goods/3"}>
-        <MenuCard
-          imgSrc="https://image.istarbucks.co.kr/upload/store/skuimg/2024/11/[9300000005615]_20241108110851934.jpg"
-          title="악세사리"
-        />
-      </Link>
-    </div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gap: "20px",
+        }}
+      >
+        {data.map((v, i) => (
+          <Link href={`/goods/${v.id}`}>
+            <GoodsCard key={i} imgSrc={v.thumbnail} title={v.title} />
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 };
 

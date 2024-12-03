@@ -1,6 +1,17 @@
-const Page = ({ params }) => {
-  const { id } = params;
-  return <div>굿즈안에 아이디 {id}</div>;
+import GoodsCard from "@/components/GoodsCard";
+
+const Page = async ({ params }) => {
+  const { id } = await params;
+
+  const data = await fetch(`https://dummyjson.com/products/${id}`).then((res) =>
+    res.json()
+  );
+
+  return (
+    <div style={{ width: "300px", height: "400px" }}>
+      <GoodsCard imgSrc={data.thumbnail} title={data.title} />
+    </div>
+  );
 };
 
 export default Page;
